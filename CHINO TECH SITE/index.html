@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080c14">
+  <meta name="description" content="Discover the CHINO TECH SITE vision: learning, innovating, and building toward a future technology company by 2035.">
+  <title>CHINO TECH SITE — Innovating Today. Building Tomorrow.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080c14;
+      --surface: #101722;
+      --surface-light: #141e2b;
+      --text: #f2f6fc;
+      --muted: #9aa8b9;
+      --line: rgba(174, 198, 225, .13);
+      --blue: #4b8dff;
+      --cyan: #50e3e0;
+      --content: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(ellipse at 78% 4%, rgba(40, 102, 195, .13), transparent 37%),
+                  radial-gradient(ellipse at 9% 42%, rgba(31, 166, 176, .055), transparent 34%);
+      content: "";
+      pointer-events: none;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .container { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 17px;
+      color: var(--cyan);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 22px; height: 1px; background: currentColor; content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3, .brand { font-family: "Space Grotesk", sans-serif; }
+    .section { padding: 104px 0; }
+    .section-heading { max-width: 650px; margin-bottom: 46px; }
+    .section-heading h2 { margin-bottom: 14px; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.15; letter-spacing: -.045em; }
+    .section-heading > p:last-child { margin-bottom: 0; color: var(--muted); }
+    .gradient-text { color: transparent; background: linear-gradient(100deg, #77aaff 4%, #53e2df 96%); background-clip: text; -webkit-background-clip: text; }
+
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 10;
+      border-bottom: 1px solid transparent;
+      background: rgba(8, 12, 20, .78);
+      backdrop-filter: blur(18px);
+      transition: border-color .25s;
+    }
+    .site-header.scrolled { border-color: var(--line); }
+    .nav { display: flex; height: 76px; align-items: center; justify-content: space-between; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font-size: 1.18rem; font-weight: 700; letter-spacing: .035em; }
+    .brand-mark {
+      display: grid;
+      width: 35px;
+      height: 35px;
+      place-items: center;
+      border: 1px solid rgba(80, 227, 224, .52);
+      border-radius: 10px;
+      color: var(--cyan);
+      background: rgba(80, 227, 224, .08);
+      font-size: .82rem;
+    }
+    .nav-links { display: flex; align-items: center; gap: 29px; margin: 0; padding: 0; list-style: none; }
+    .nav-links a { color: #c1ccda; font-size: .86rem; transition: color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--cyan); }
+    .nav-links .nav-cta { padding: 10px 17px; border: 1px solid rgba(80, 227, 224, .4); border-radius: 7px; color: var(--cyan); }
+    .menu-toggle { display: none; border: 0; color: var(--text); background: none; cursor: pointer; }
+
+    .hero { position: relative; display: grid; min-height: 740px; align-items: center; overflow: hidden; padding: 130px 0 82px; }
+    .hero-grid { display: grid; grid-template-columns: 1.04fr .96fr; align-items: center; gap: 46px; }
+    .hero-copy { position: relative; z-index: 1; }
+    .hero h1 { max-width: 700px; margin-bottom: 23px; font-size: clamp(3rem, 6vw, 5.25rem); line-height: 1.02; letter-spacing: -.065em; }
+    .hero-copy > p:not(.eyebrow) { max-width: 570px; margin-bottom: 30px; color: #aab7c8; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
+    .button { display: inline-flex; min-height: 49px; align-items: center; justify-content: center; gap: 10px; padding: 0 19px; border: 1px solid transparent; border-radius: 7px; font-size: .91rem; font-weight: 700; transition: transform .2s, border-color .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #071017; background: linear-gradient(110deg, #78aaff, #5ce1df); }
+    .button-secondary { border-color: var(--line); color: #e1e9f3; background: rgba(255, 255, 255, .025); }
+    .button-secondary:hover { border-color: rgba(80, 227, 224, .45); }
+    .hero-note { display: flex; align-items: center; gap: 10px; margin-top: 37px; color: #8190a3; font-size: .8rem; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 14px rgba(80, 227, 224, .7); }
+    .hero-art { position: relative; display: grid; min-height: 440px; place-items: center; }
+    .art-glow { position: absolute; width: 310px; height: 310px; border-radius: 50%; background: rgba(43, 116, 211, .2); filter: blur(72px); }
+    .orbit { position: absolute; width: 350px; height: 350px; border: 1px solid rgba(95, 163, 255, .19); border-radius: 50%; transform: rotate(-25deg) scaleY(.45); }
+    .orbit.orbit-two { width: 440px; height: 440px; border-color: rgba(80, 227, 224, .13); transform: rotate(40deg) scaleY(.45); }
+    .orbit.orbit-three { width: 265px; height: 265px; border-color: rgba(95, 163, 255, .25); transform: rotate(75deg) scaleY(.45); }
+    .orbit-dot { position: absolute; top: 49px; left: 71px; width: 10px; height: 10px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 20px var(--cyan); }
+    .core {
+      position: relative;
+      display: grid;
+      width: 205px;
+      height: 205px;
+      place-items: center;
+      border: 1px solid rgba(102, 178, 255, .45);
+      border-radius: 39px;
+      background: linear-gradient(145deg, rgba(28, 53, 85, .9), rgba(11, 21, 34, .94));
+      box-shadow: 0 25px 90px rgba(19, 88, 173, .19), inset 0 0 35px rgba(80, 170, 255, .08);
+      transform: rotate(-8deg);
+    }
+    .core svg { width: 100px; height: 100px; color: #71dfe6; filter: drop-shadow(0 0 18px rgba(80, 227, 224, .3)); }
+    .art-label { position: absolute; right: -1px; bottom: 40px; padding: 12px 16px; border: 1px solid var(--line); border-radius: 9px; color: #dbe5f2; background: rgba(16, 23, 34, .82); font-size: .79rem; backdrop-filter: blur(12px); }
+    .art-label strong { display: block; margin-bottom: 2px; color: var(--cyan); font-family: "Space Grotesk", sans-serif; font-size: 1.08rem; }
+    .scroll-cue { position: absolute; bottom: 26px; left: 50%; color: #6e7d90; font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; transform: translateX(-50%); }
+
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 85px; align-items: start; }
+    .about-intro h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4.5vw, 3.5rem); line-height: 1.12; letter-spacing: -.05em; }
+    .about-copy { padding-top: 27px; }
+    .about-copy p { color: var(--muted); }
+    .about-copy p:first-child { color: #d5deea; font-size: 1.1rem; }
+    .founder-note { display: flex; gap: 14px; margin-top: 28px; padding: 17px 19px; border-left: 2px solid var(--cyan); background: linear-gradient(90deg, rgba(80, 227, 224, .07), transparent); }
+    .founder-note p { margin: 0; font-size: .9rem; }
+
+    .departments { background: linear-gradient(180deg, transparent, rgba(17, 26, 39, .55) 18%, rgba(17, 26, 39, .55) 82%, transparent); }
+    .department-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+    .department-card, .project-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 11px;
+      background: rgba(16, 23, 34, .8);
+      transition: transform .25s, border-color .25s, background .25s;
+    }
+    .department-card { min-height: 196px; padding: 23px 21px; }
+    .department-card:hover, .project-card:hover { transform: translateY(-4px); border-color: rgba(80, 227, 224, .3); background-color: var(--surface-light); }
+    .icon-box { display: grid; width: 42px; height: 42px; margin-bottom: 19px; place-items: center; border: 1px solid rgba(82, 143, 255, .2); border-radius: 10px; color: #75aaff; background: rgba(75, 141, 255, .08); }
+    .icon-box svg { width: 21px; height: 21px; }
+    .department-card h3 { margin-bottom: 8px; font-size: 1rem; letter-spacing: -.02em; }
+    .department-card p { margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.55; }
+    .department-card:last-child { grid-column: span 1; }
+    .department-footnote { margin: 20px 0 0; color: #718096; font-size: .8rem; }
+
+    .vision-layout { display: grid; grid-template-columns: .85fr 1.15fr; gap: 80px; align-items: start; }
+    .vision-lead { position: sticky; top: 120px; }
+    .vision-lead h2 { margin-bottom: 18px; font-size: clamp(2.4rem, 5vw, 4.1rem); line-height: 1.05; letter-spacing: -.06em; }
+    .vision-lead p:last-child { max-width: 380px; color: var(--muted); }
+    .steps { display: grid; gap: 0; }
+    .step { position: relative; display: grid; grid-template-columns: 51px 1fr; gap: 20px; padding: 4px 0 34px; }
+    .step:not(:last-child)::after { position: absolute; top: 49px; bottom: 0; left: 24px; width: 1px; background: linear-gradient(var(--blue), rgba(80, 227, 224, .1)); content: ""; }
+    .step-number { position: relative; z-index: 1; display: grid; width: 49px; height: 49px; place-items: center; border: 1px solid rgba(80, 227, 224, .32); border-radius: 50%; color: var(--cyan); background: var(--bg); font-family: "Space Grotesk", sans-serif; font-size: .85rem; }
+    .step h3 { margin: 3px 0 8px; font-size: 1.16rem; }
+    .step p { max-width: 490px; margin: 0; color: var(--muted); font-size: .9rem; }
+
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .project-card { min-height: 320px; padding: 0 0 24px; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 39px; }
+    .project-visual { display: block; width: 100%; height: 140px; overflow: hidden; border-bottom: 1px solid var(--line); background: #0c1521; }
+    .project-visual svg { display: block; width: 100%; height: 100%; }
+    .project-card .project-top { margin: 0; padding: 17px 22px 0; }
+    .project-number { color: #63738a; font-family: "Space Grotesk", sans-serif; font-size: .76rem; letter-spacing: .1em; }
+    .concept-tag { padding: 5px 9px; border: 1px solid rgba(80, 227, 224, .19); border-radius: 20px; color: var(--cyan); background: rgba(80, 227, 224, .055); font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+    .project-card h3 { margin: 13px 22px 8px; font-size: 1.2rem; }
+    .project-card p { margin: 0 22px; color: var(--muted); font-size: .88rem; }
+    .project-card::after { position: absolute; right: -55px; bottom: -85px; width: 170px; height: 170px; border: 1px solid rgba(75, 141, 255, .12); border-radius: 50%; box-shadow: 0 0 0 17px rgba(75, 141, 255, .025), 0 0 0 34px rgba(75, 141, 255, .018); content: ""; }
+    .project-disclaimer { margin: 18px 0 0; color: #748398; font-size: .8rem; }
+
+    .contact-section { padding-top: 60px; }
+    .contact-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 68px; padding: clamp(27px, 5vw, 58px); border: 1px solid rgba(80, 227, 224, .15); border-radius: 15px; background: radial-gradient(ellipse at 6% 0%, rgba(42, 114, 190, .14), transparent 44%), #0e1520; }
+    .contact-info h2 { margin-bottom: 15px; font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.08; letter-spacing: -.05em; }
+    .contact-info > p:not(.eyebrow) { max-width: 390px; margin-bottom: 31px; color: var(--muted); }
+    .contact-list { display: grid; gap: 15px; }
+    .contact-link { display: flex; align-items: center; gap: 12px; color: #d2dbe7; font-size: .9rem; transition: color .2s; }
+    .contact-link:hover { color: var(--cyan); }
+    .contact-link .icon-box { width: 37px; height: 37px; margin: 0; }
+    .contact-form { display: grid; align-content: center; gap: 14px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .field label { display: block; margin-bottom: 6px; color: #b8c4d2; font-size: .78rem; font-weight: 600; }
+    .field input, .field textarea { width: 100%; border: 1px solid rgba(174, 198, 225, .15); border-radius: 7px; outline: none; color: var(--text); background: rgba(4, 8, 14, .4); transition: border-color .2s; }
+    .field input { height: 45px; padding: 0 12px; }
+    .field textarea { min-height: 116px; padding: 11px 12px; resize: vertical; }
+    .field input:focus, .field textarea:focus { border-color: rgba(80, 227, 224, .65); }
+    .field input::placeholder, .field textarea::placeholder { color: #67768a; }
+    .contact-form .button { justify-self: start; margin-top: 2px; cursor: pointer; }
+    .form-note { margin: -4px 0 0; color: #718096; font-size: .73rem; }
+
+    .closing { padding: 72px 0 55px; text-align: center; }
+    .closing p { max-width: 780px; margin: 0 auto; font-family: "Space Grotesk", sans-serif; font-size: clamp(1.5rem, 3.7vw, 2.65rem); font-weight: 600; line-height: 1.28; letter-spacing: -.035em; }
+    .footer { border-top: 1px solid var(--line); }
+    .footer-inner { display: flex; min-height: 79px; align-items: center; justify-content: space-between; gap: 20px; color: #78879a; font-size: .78rem; }
+    .footer-inner p { margin: 0; }
+    .footer-brand { color: #b8c4d2; font-family: "Space Grotesk", sans-serif; font-weight: 700; letter-spacing: .05em; }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
+    @media (max-width: 900px) {
+      .nav-links { gap: 17px; }
+      .nav-links a { font-size: .78rem; }
+      .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 10px; }
+      .hero-art { transform: scale(.87); }
+      .department-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .vision-layout { gap: 48px; }
+      .contact-panel { gap: 36px; }
+    }
+    @media (max-width: 680px) {
+      .container { width: min(var(--content), calc(100% - 38px)); }
+      .section { padding: 76px 0; }
+      .nav { height: 68px; }
+      .menu-toggle { display: grid; width: 42px; height: 42px; place-items: center; }
+      .menu-toggle svg { width: 23px; height: 23px; }
+      .nav-links { position: absolute; top: 67px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px 19px 18px; border-bottom: 1px solid var(--line); background: rgba(8, 12, 20, .98); }
+      .nav-links.open { display: flex; flex-direction: column; }
+      .nav-links a { display: block; padding: 12px 4px; font-size: .95rem; }
+      .nav-links .nav-cta { margin-top: 8px; padding: 10px 13px; text-align: center; }
+      .hero { min-height: auto; padding: 126px 0 62px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 0; }
+      .hero h1 { max-width: 590px; font-size: clamp(2.8rem, 12vw, 4.4rem); }
+      .hero-copy > p:not(.eyebrow) { font-size: 1rem; }
+      .hero-art { min-height: 315px; margin: -5px auto -5px; transform: scale(.77); }
+      .scroll-cue { display: none; }
+      .about-grid, .vision-layout, .contact-panel { grid-template-columns: 1fr; gap: 23px; }
+      .about-copy { padding-top: 0; }
+      .vision-lead { position: static; }
+      .project-grid { grid-template-columns: 1fr; }
+      .project-card { min-height: 300px; }
+      .project-visual { height: 150px; }
+      .project-top { margin-bottom: 27px; }
+      .contact-panel { gap: 36px; padding: 26px 20px; }
+      .footer-inner { min-height: 83px; align-items: flex-start; justify-content: center; flex-direction: column; gap: 3px; }
+    }
+    @media (max-width: 420px) {
+      .department-grid { grid-template-columns: 1fr; }
+      .department-card { min-height: auto; }
+      .form-row { grid-template-columns: 1fr; gap: 14px; }
+      .hero-actions .button { flex: 1; padding-inline: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+    <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-3-11-2 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-file" viewBox="0 0 24 24"><path d="M7 3.75h7l4.25 4.5v12H7zM14 4v5h4M10 13h5m-5 3.5h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-chip" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M9 9h6v6H9zM9 2.5v3m6-3v3m-6 13v3m6-3v3M2.5 9h3m-3 6h3m13-6h3m-3 6h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="icon-shield" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.7-3 8-7 10-4-2-7-5.3-7-10V6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-ai" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M4.9 4.9 7 7m10 10 2.1 2.1m0-14.2L17 7M7 17l-2.1 2.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3"/></symbol>
+    <symbol id="icon-leaf" viewBox="0 0 24 24"><path d="M20 4c-9 0-14 3.5-14 10a6 6 0 0 0 6 6c6.5 0 10-5 8-16Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M4 21c3-5 6-7 12-10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 16v-5m5 5V5m5 11v-8" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="m5 8 5-3 5 3 5-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-phone" viewBox="0 0 24 24"><path d="M7 3.5h10a1.5 1.5 0 0 1 1.5 1.5v14a1.5 1.5 0 0 1-1.5 1.5H7A1.5 1.5 0 0 1 5.5 19V5A1.5 1.5 0 0 1 7 3.5Z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 17.5h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+    <symbol id="icon-mark" viewBox="0 0 100 100"><path d="M50 10 88 32v36L50 90 12 68V32L50 10Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m34 38 16-10 16 10v24L50 72 34 62V38Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M50 28v44M34 38l32 24M66 38 34 62" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".75"/></symbol>
+  </svg>
+
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="CHINO TECH SITE home"><span class="brand-mark">CTS</span><span>CHINO TECH SITE</span></a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-links"><svg><use href="#icon-menu"></use></svg></button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#departments">Departments</a></li>
+        <li><a href="#vision">Vision 2035</a></li>
+        <li><a href="#projects">Future projects</a></li>
+        <li><a class="nav-cta" href="#contact">Get in touch <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">A vision in progress</p>
+          <h1>Building the Future Through <span class="gradient-text">Technology and Innovation.</span></h1>
+          <p>CHINO TECH SITE is an aspiring technology company vision: a commitment to learn, create, and grow toward something meaningful by 2035.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#vision">Explore the vision <svg width="18" height="18"><use href="#icon-arrow"></use></svg></a>
+            <a class="button button-secondary" href="#about">Discover CHINO TECH SITE</a>
+          </div>
+          <div class="hero-note"><span class="status-dot"></span>Starting with curiosity. Building with intention.</div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-glow"></div>
+          <div class="orbit"><span class="orbit-dot"></span></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <div class="core"><svg><use href="#icon-mark"></use></svg></div>
+          <div class="art-label"><strong>2035</strong>A future to build toward</div>
+        </div>
+      </div>
+      <a class="scroll-cue" href="#about">Scroll to explore&nbsp; ↓</a>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-intro reveal">
+          <p class="eyebrow">About the vision</p>
+          <h2>Big ideas begin with <span class="gradient-text">a first step.</span></h2>
+        </div>
+        <div class="about-copy reveal">
+          <p>CHINO TECH SITE is a future-focused company vision shaped by a passion for technology, innovation, and business.</p>
+          <p>As its aspiring founder and future CEO, I’m working toward that vision one step at a time: learning new skills, exploring ideas, and building the experience to turn ambition into a responsible business.</p>
+          <div class="founder-note"><span class="status-dot" aria-hidden="true"></span><p>This is a vision in progress—not an established business. The journey starts with what I can learn and build today.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section departments" id="departments">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Areas of exploration</p>
+          <h2>Seven fields. <span class="gradient-text">One connected future.</span></h2>
+          <p>These are the areas I hope to explore and develop as the CHINO TECH SITE vision grows.</p>
+        </div>
+        <div class="department-grid">
+          <article class="department-card reveal"><span class="icon-box"><svg><use href="#icon-code"></use></svg></span><h3>Software Development</h3><p>Creating useful digital tools, applications, and experiences.</p></article>
+          <article class="department-card reveal"><span class="icon-box"><svg><use href="#icon-file"></use></svg></span><h3>Digital Documentation</h3><p>Making information easier to organize, access, and share.</p></article>
+          <article class="department-card reveal"><span class="icon-box"><svg><use href="#icon-chip"></use></svg></span><h3>Computer Hardware</h3><p>Understanding the devices and systems that power technology.</p></article>
+          <article class="department-card reveal"><span class="icon-box"><svg><use href="#icon-shield"></use></svg></span><h3>Ethical Hacking &amp; Cybersecurity</h3><p>Learning how to protect systems and use security skills responsibly.</p></article>
+          <article class="department-card reveal"><span class="icon-box"><svg><use href="#icon-ai"></use></svg></span><h3>AI &amp; Data Science</h3><p>Exploring intelligent systems and insights from data.</p></article>
+          <article class="department-card reveal"><span class="icon-box"><svg><use href="#icon-leaf"></use></svg></span><h3>Poultry &amp; Agriculture</h3><p>Considering how practical innovation can support food and farming.</p></article>
+          <article class="department-card reveal"><span class="icon-box"><svg><use href="#icon-chart"></use></svg></span><h3>Investment &amp; Financial Education</h3><p>Building financial knowledge and learning to make informed decisions.</p></article>
+        </div>
+        <p class="department-footnote">Planned areas of interest—not currently operating departments.</p>
+      </div>
+    </section>
+
+    <section class="section" id="vision">
+      <div class="container vision-layout">
+        <div class="vision-lead reveal">
+          <p class="eyebrow">The long view</p>
+          <h2>Our Vision <span class="gradient-text">2035</span></h2>
+          <p>A meaningful future is built, not rushed. The ambition is to grow CHINO TECH SITE through steady learning, practical experience, and thoughtful development.</p>
+        </div>
+        <div class="steps">
+          <article class="step reveal"><span class="step-number">01</span><div><h3>Learn the foundations</h3><p>Build knowledge across technology, communication, business, and the fields that inspire the vision.</p></div></article>
+          <article class="step reveal"><span class="step-number">02</span><div><h3>Practice through small projects</h3><p>Turn learning into manageable experiments, develop useful skills, and improve with each attempt.</p></div></article>
+          <article class="step reveal"><span class="step-number">03</span><div><h3>Gain experience and perspective</h3><p>Seek opportunities to learn from real challenges, collaborate, and understand what people actually need.</p></div></article>
+          <article class="step reveal"><span class="step-number">04</span><div><h3>Build a business with purpose</h3><p>When the time is right, bring the strongest ideas together into a thoughtful company built for the long term.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section departments" id="projects">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Ideas for the future</p>
+          <h2>Possibilities worth <span class="gradient-text">exploring.</span></h2>
+          <p>Early concepts that reflect the kind of useful, responsible work I hope to pursue.</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card reveal">
+            <svg class="project-visual" viewBox="0 0 420 140" role="img" aria-label="Abstract illustration of a digital interface and connected technology" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="digital-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#122541"/><stop offset="1" stop-color="#101923"/></linearGradient><linearGradient id="digital-line" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#4b8dff"/><stop offset="1" stop-color="#50e3e0"/></linearGradient></defs>
+              <path fill="url(#digital-bg)" d="M0 0h420v140H0z"/><path d="M0 104h420M0 119h420" stroke="#8bbaff" stroke-opacity=".08"/>
+              <rect x="132" y="22" width="157" height="96" rx="10" fill="#0a111c" stroke="#609de7" stroke-opacity=".55"/>
+              <path d="M146 37h72M146 47h44" stroke="#73869e" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+              <rect x="146" y="60" width="57" height="42" rx="5" fill="#14283d" stroke="#50e3e0" stroke-opacity=".55"/>
+              <path d="m156 88 12-13 10 8 14-16" fill="none" stroke="url(#digital-line)" stroke-width="2"/>
+              <rect x="212" y="60" width="62" height="8" rx="4" fill="#4b8dff" opacity=".6"/><rect x="212" y="75" width="45" height="6" rx="3" fill="#8294aa" opacity=".45"/><rect x="212" y="88" width="53" height="6" rx="3" fill="#50e3e0" opacity=".55"/>
+              <circle cx="95" cy="65" r="20" fill="#12283b" stroke="#50e3e0" stroke-opacity=".45"/><path d="M87 65h16m-8-8v16" stroke="#6de2df" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="328" cy="45" r="6" fill="#50e3e0"/><circle cx="350" cy="85" r="4" fill="#4b8dff"/><path d="m328 45 22 40m-22-40-39 13m39 27-39 9" stroke="#70bfe4" stroke-opacity=".4"/>
+              <path d="M50 37h30M65 22v30" stroke="#4b8dff" stroke-opacity=".25"/>
+            </svg>
+            <div class="project-top"><span class="project-number">CONCEPT 01</span><span class="concept-tag">Exploration</span></div>
+            <h3>Everyday Digital Tools</h3><p>Simple software ideas that could help people manage tasks, information, or everyday work more easily.</p>
+          </article>
+          <article class="project-card reveal">
+            <svg class="project-visual" viewBox="0 0 420 140" role="img" aria-label="Abstract illustration of a digital learning space with books and a glowing screen" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="learning-bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#18223b"/><stop offset="1" stop-color="#111925"/></linearGradient><linearGradient id="learning-screen" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#34598b"/><stop offset="1" stop-color="#173c4c"/></linearGradient></defs>
+              <path fill="url(#learning-bg)" d="M0 0h420v140H0z"/><circle cx="315" cy="35" r="64" fill="#4b8dff" opacity=".06"/>
+              <rect x="147" y="18" width="126" height="82" rx="8" fill="#0b121d" stroke="#718fb5" stroke-opacity=".45"/>
+              <rect x="154" y="25" width="112" height="68" rx="4" fill="url(#learning-screen)"/>
+              <path d="M174 72 193 51l15 12 17-22 20 26" fill="none" stroke="#67e1df" stroke-width="2" opacity=".85"/>
+              <circle cx="224" cy="41" r="4" fill="#92b9ff"/>
+              <path d="M129 105h162l15 7H114z" fill="#26364b" stroke="#718fb5" stroke-opacity=".4"/>
+              <rect x="65" y="72" width="20" height="42" rx="3" fill="#385d88"/><rect x="89" y="61" width="22" height="53" rx="3" fill="#1f8790"/><rect x="115" y="80" width="17" height="34" rx="3" fill="#6b77a5"/>
+              <path d="M70 82h10m-10 8h10m13-19h12m-12 9h12m-11 9h10m-1 0 8 0" stroke="#d1e7f4" stroke-opacity=".48"/>
+              <path d="M45 114h330" stroke="#50e3e0" stroke-opacity=".2"/><circle cx="341" cy="75" r="18" fill="#12293a" stroke="#50e3e0" stroke-opacity=".45"/><path d="m334 75 5 5 10-11" fill="none" stroke="#50e3e0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="project-top"><span class="project-number">CONCEPT 02</span><span class="concept-tag">Exploration</span></div>
+            <h3>Practical Tech Learning</h3><p>Accessible learning resources to help curious beginners build confidence with technology.</p>
+          </article>
+          <article class="project-card reveal">
+            <svg class="project-visual" viewBox="0 0 420 140" role="img" aria-label="Illustration of green agricultural fields with a digital sensor" preserveAspectRatio="xMidYMid slice">
+              <defs><linearGradient id="farm-sky" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#17283b"/><stop offset="1" stop-color="#24433e"/></linearGradient><linearGradient id="farm-field" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#4b8d76"/><stop offset="1" stop-color="#153f3c"/></linearGradient></defs>
+              <path fill="url(#farm-sky)" d="M0 0h420v140H0z"/><circle cx="324" cy="34" r="17" fill="#91dfd2" opacity=".75"/><circle cx="324" cy="34" r="30" fill="#91dfd2" opacity=".09"/>
+              <path d="m0 79 96-36 91 34 92-30 141 39v54H0z" fill="#244440"/>
+              <path d="m0 97 110-28 89 34 105-35 116 39v33H0z" fill="url(#farm-field)"/>
+              <path d="m9 140 145-57m5 57 75-55m28 55 54-51m43 51 36-45" stroke="#a3dfbf" stroke-opacity=".44" stroke-width="3"/>
+              <path d="M207 85V50m-9 13c0-9 9-12 9-12s9 3 9 12m-18-4c0-8 9-11 9-11s9 3 9 11" fill="none" stroke="#64d6b0" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="207" cy="46" r="3" fill="#50e3e0"/>
+              <path d="M207 46c16-20 35-23 51-20m-51 20c-12-20-29-27-46-25" fill="none" stroke="#50e3e0" stroke-opacity=".55" stroke-dasharray="3 4"/>
+              <rect x="190" y="83" width="34" height="14" rx="4" fill="#102b31" stroke="#64d6b0" stroke-opacity=".6"/>
+              <path d="M198 90h4m4 0h4m4 0h4" stroke="#50e3e0" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <div class="project-top"><span class="project-number">CONCEPT 03</span><span class="concept-tag">Exploration</span></div>
+            <h3>Smarter Agriculture</h3><p>Exploring how digital ideas and practical knowledge might support more informed farming.</p>
+          </article>
+        </div>
+        <p class="project-disclaimer">These are future ideas—not existing products, active projects, or announced plans.</p>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-panel reveal">
+        <div class="contact-info">
+          <p class="eyebrow">Start a conversation</p>
+          <h2>Good ideas start with <span class="gradient-text">a hello.</span></h2>
+          <p>Have a thought, a question, or a learning opportunity to share? I’d be glad to hear from you.</p>
+          <div class="contact-list">
+            <a class="contact-link" href="tel:+237683529983"><span class="icon-box"><svg><use href="#icon-phone"></use></svg></span>+237 683 529 983</a>
+            <a class="contact-link" href="tel:+237679307535"><span class="icon-box"><svg><use href="#icon-phone"></use></svg></span>+237 679 307 535</a>
+            <a class="contact-link" href="mailto:chinfrancois002@gmail.com"><span class="icon-box"><svg><use href="#icon-mail"></use></svg></span>chinfrancois002@gmail.com</a>
+          </div>
+        </div>
+        <form class="contact-form" id="contact-form">
+          <div class="form-row">
+            <div class="field"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="How should I address you?" required></div>
+            <div class="field"><label for="email">Your email</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+          </div>
+          <div class="field"><label for="message">Your message</label><textarea id="message" name="message" placeholder="What would you like to talk about?" required></textarea></div>
+          <button class="button button-primary" type="submit">Prepare your message <svg width="18" height="18"><use href="#icon-arrow"></use></svg></button>
+          <p class="form-note">Your email app will open with your message ready to send. Nothing is stored on this site.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="container reveal">
+        <p>“Our mission is to <span class="gradient-text">learn today, innovate continuously, and build toward 2035.</span>”</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a class="footer-brand" href="#home">CHINO TECH SITE</a>
+      <p>Innovating Today. Building Tomorrow.</p>
+      <p>© <span id="year"></span> CHINO TECH SITE · A vision in progress</p>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.querySelector(".site-header");
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    const updateHeader = () => header.classList.toggle("scrolled", window.scrollY > 12);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+      menuToggle.setAttribute("aria-expanded", String(!isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Open navigation menu" : "Close navigation menu");
+      navLinks.classList.toggle("open", !isOpen);
+    });
+    navLinks.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation menu");
+      }
+    });
+
+    const revealItems = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      const observer = new IntersectionObserver((entries, currentObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            currentObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach((item) => observer.observe(item));
+    } else {
+      revealItems.forEach((item) => item.classList.add("visible"));
+    }
+
+    document.querySelector("#year").textContent = new Date().getFullYear();
+    document.querySelector("#contact-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      if (!event.currentTarget.reportValidity()) return;
+      const formData = new FormData(event.currentTarget);
+      const subject = encodeURIComponent(`CHINO TECH SITE website message from ${formData.get("name")}`);
+      const body = encodeURIComponent(
+        `Name: ${formData.get("name")}\nEmail: ${formData.get("email")}\n\n${formData.get("message")}`
+      );
+      window.location.href = `mailto:chinfrancois002@gmail.com?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
